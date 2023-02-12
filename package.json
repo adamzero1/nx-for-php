@@ -1,0 +1,19 @@
+{
+    "name": "magento",
+    "version": "0.0.0",
+    "license": "MIT",
+    "scripts": {
+        "generate-workspace": "node dev/tools/nx/generate-workspace/index.js"
+    },
+    "private": true,
+    "dependencies": {
+        "@nrwl/workspace": "^15.6.3"
+    },
+    "devDependencies": {
+        "nx": "15.4.1",
+        "prettier": "^2.6.2"
+    },
+    "workspaces": [
+        "packages/*"
+    ]
+}

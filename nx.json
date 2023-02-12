@@ -1,0 +1,15 @@
+{
+    "npmScope": "nx-project",
+    "tasksRunnerOptions": {
+      "default": {
+        "runner": "nx/tasks-runners/default",
+        "options": {
+          "cacheableOperations": ["build", "test"]
+        }
+      }
+    },
+    "plugins": [
+      "./nx/plugins/composer-project-graph.js"
+    ]
+  }
+  

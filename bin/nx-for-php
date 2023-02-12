@@ -1,0 +1,87 @@
+#!/bin/bash
+
+function checkForBins(){
+    BINS="php
+    node
+    nx
+    "
+    for binary in ${BINS}; do
+        which ${binary} >>/dev/null;
+        if [ $? -gt 0 ]; then
+            echo "${binary} binary not found, please install."
+            exit 1;
+        fi
+    done
+}
+
+function copyFilesIn(){
+    cp -r "$(dirname -- $(dirname -- $0))/nx" ./
+    cp $(dirname -- $(dirname -- $0))/*.json ./
+}
+
+function installDeps(){
+    npm ci
+}
+
+
+function generateWorkspaceJson(){
+    if [ ! -f "workspace.json" ]; then
+        node ./nx/generate-workspace.js
+    fi
+}
+
+
+set -xe
+checkForBins
+
+copyFilesIn
+
+installDeps
+
+generateWorkspaceJson
+
+echo "good to go"
+exit 0
+
+npm ci
+
+wget -O ./nx/bin/php-classes.phar https://github.com/adamzero1/php-dependency-list/raw/main/php-classes.phar
+chmod a+x ./nx/bin/php-classes.phar
+
+node ./nx/generate-workspace.js
+echo "Yo"
+exit 0
+
+
+
+
+
+
+PHP_CLASSES_PHAR="$(dirname -- $0)/php-classes.phar"
+function installPhpClassesPhar(){
+    if [ ! -f ${PHP_CLASSES_PHAR} ]; then
+        echo "installing php-classes.phar...";
+        wget -O ${PHP_CLASSES_PHAR} https://github.com/adamzero1/php-dependency-list/raw/main/php-classes.phar
+        chmod a+x ${PHP_CLASSES_PHAR}
+    fi
+}
+
+
+NX_JSON="$(dirname -- $(dirname -- $0))/nx/nx.json"
+function generateNxJson(){
+    if [ ! -f "nx.json" ]; then
+        echo "generating nx.json"
+        cp ${NX_JSON} ./nx.json
+        sed -i "s|COMPOSER_GRAPH_PLUGIN|$(dirname -- $(dirname -- $0))/nx/plugins/composer-project-graph.js|g" nx.json
+    fi
+}
+
+checkForBins
+
+copyFilesIn
+# lib/internal/Magento/Framework/App/ProductMetadata.php
+
+
+generateNxJson
+cp ../nx-for-php/package* ./
+npm ci

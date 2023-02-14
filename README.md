@@ -35,3 +35,14 @@ nx affected:graph --verbose --skip-nx-cache --files=lib/internal/Magento/Framewo
 
 nx dep-graph --verbose --skip-nx-cache
 ```
+
+```
+# nx run-many --target=test
+# nx affected --target=test
+```
+243   nx affected --target=test --files=lib/internal/Magento/Framework/App/ProductMetadata.php
+249   nx run-many --target=test
+
+
+
+Seems to be an issue in calculating effected, need to manually work through

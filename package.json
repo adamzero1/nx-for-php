@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "license": "MIT",
     "scripts": {
-        "generate-workspace": "node dev/tools/nx/generate-workspace/index.js"
+        "generate-workspace": "node nx/generate-workspace.js"
     },
     "private": true,
     "dependencies": {

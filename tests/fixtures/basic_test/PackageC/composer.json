@@ -1,0 +1,14 @@
+{
+    "name": "blah/package-c",
+    "description": "Magento 2 (Open Source)",
+    "type": "project",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "psr-4": {
+            "MyProject\\PackageC": ""
+        }
+    }
+}

@@ -26,8 +26,12 @@ paths.forEach(path => {
             sourceRoot: path.replace('/composer.json', ''),
             projectType: composerJson.type? composerJson.type : 'unknown', 
             targets: {
-                test: {
-                    command: 'echo "TEST: '+composerJson.name+'"'
+                'test:unit': {
+                    //command: 'echo "TEST: '+composerJson.name+'"'
+                    command: './vendor/bin/phpunit -c phpunit.nx.xml ' + path.replace('composer.json', '') + 'Test/Unit'
+                },
+                'test:integration': {
+                    command: 'echo "integration tests for: '+composerJson.name+'"'
                 }
             },
             tags: [],

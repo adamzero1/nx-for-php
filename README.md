@@ -105,6 +105,7 @@ Seems to be an issue in calculating effected, need to manually work through
 - Get this working without specifying `--files`
 - Circlurar deps
 - `npm run why ModuleA ModuleB` - show why ModuleA depends on Module B
+- Add `--excludes` to generate command (to exclude directories/files) - stop sample composer.json files from being used
 
 
 

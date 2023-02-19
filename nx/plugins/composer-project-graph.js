@@ -20,6 +20,10 @@ function loadReferences() {
     return references;
 }
 
+function shouldLog() {
+    return process.env.NX_VERBOSE_LOGGING === 'true';
+}
+
 function processProjectGraph(graph, context) {
     // console.log('processProjectGraph', {
     //     context,
@@ -32,9 +36,11 @@ function processProjectGraph(graph, context) {
     references = loadReferences();
 
     var i = 1;
-    var projectCount = Object.keys(context.workspace.projects).length + 1;
+    var projectCount = Object.keys(context.workspace.projects).length;
     for(var projectName in context.workspace.projects){
-        console.log('processing %s (%d / %d)', projectName, i, projectCount)
+        if(shouldLog()){
+            console.log('processing %s (%d / %d)', projectName, i, projectCount)
+        }
         let projectConfig = context.workspace.projects[projectName];
         // processComposerJson(projectName, projectConfig, builder, graph, context);
         processProjectFiles(projectName, projectConfig, builder, graph, context);

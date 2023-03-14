@@ -32,6 +32,9 @@ paths.forEach(path => {
                 },
                 'test:integration': {
                     command: 'echo "integration tests for: '+composerJson.name+'"'
+                },
+                'test:test': {
+                    command: 'echo "den location: ${DEN}"'
                 }
             },
             tags: [],

@@ -34,7 +34,8 @@ paths.forEach(path => {
                     command: 'echo "integration tests for: '+composerJson.name+'"'
                 },
                 'test:test': {
-                    command: 'echo "den location: ${DEN}"'
+                    command: '${DEN} env exec -T php-fpm ./vendor/bin/phpunit -c phpunit.nx.xml ' + path.replace('composer.json', '') + 'Test/Unit'
+                    
                 }
             },
             tags: [],

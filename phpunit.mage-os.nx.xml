@@ -7,6 +7,7 @@
 -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
+    beStrictAboutTestsThatDoNotTestAnything="false"
     bootstrap="dev/tests/unit/framework/bootstrap.php">
     <listeners>
         <listener class="Magento\Framework\TestFramework\Unit\Listener\ReplaceObjectManager"/>

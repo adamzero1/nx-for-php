@@ -35,7 +35,7 @@ paths.forEach(path => {
                 },
                 'test:test': {
                     command: '${DEN} env exec -T php-fpm ./vendor/bin/phpunit -c dev/tests/unit/phpunit.xml ' + path.replace('composer.json', '') 
-                      + 'Test/Unit  || ${DEN} env exec -T php-fpm ./vendor/bin/phpunit -c dev/tests/unit/phpunit.xml --verbose ' + path.replace('composer.json', '') + 'Test/Unit'
+                      + 'Test/Unit  || ./vendor/bin/phpunit -c dev/tests/unit/phpunit.xml --verbose ' + path.replace('composer.json', '') + 'Test/Unit'
                 }
             },
             tags: [],

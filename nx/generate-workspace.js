@@ -44,7 +44,7 @@ paths.forEach(path => {
     var composerJson = JSON.parse(fs.readFileSync(path));
     if(composerJson.name){
         let modulePath = path.replace('composer.json', '');
-        let moduleDirectory = modulePath.trim('/').split('/').pop();
+        let moduleDirectory = modulePath.substr(0, modulePath.length -1).split('/').pop();
         let moduleName = composerJson.name;
         let targets = {};
         configuration.commands.forEach(function(commandId, commandIndex){

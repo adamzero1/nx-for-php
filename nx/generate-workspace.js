@@ -41,7 +41,6 @@ console.log('Generating workspace.json', {args, configuration});
 let paths = glob.sync('**/composer.json');
 paths = ig.filter(paths);
 paths.forEach(path => {
-    console.log('path', {path});
     var composerJson = JSON.parse(fs.readFileSync(path));
     if(composerJson.name){
         let modulePath = path.replace('composer.json', '');
